@@ -83,7 +83,12 @@ npm run build
 ## 演示
 
 官网前台界面： http://localhost:8080
+
+![img](https://raw.githubusercontent.com/Echosong/beego_element_cms/master/doc/1.png)
+
 后台：  http://localhost:8081
+
+![img](https://raw.githubusercontent.com/Echosong/beego_element_cms/master/doc/2.png)
 
 ```
 proxy: {
