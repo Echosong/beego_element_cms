@@ -80,6 +80,33 @@ npm run build
 
 > 注意前端的菜单，对应这后端的菜单权限管理，后端没有专门做菜单关联添加相关功能，可以通过数据库 表 hz_permission 进行修改添加
 
+## 演示
+
+官网前台界面： http://localhost:8080
+后台：  http://localhost:8081
+
+```
+proxy: {
+			"/api":{
+				target: "http://localhost:8080/api",
+				changeOrigin: true,
+				pathRewrite:{
+					'^/api':''
+				}
+			},
+			'/upload':{
+				target: "http://localhost:8080/upload",
+				changeOrigin: true,
+				pathRewrite: {
+					'^/upload':''
+				}
+			}
+			
+		}
+```
+> 发布时候 nginx 运行请参考上面做相应的反向代理
+
+
 
 ## 商用
 
@@ -90,6 +117,8 @@ npm run build
 如果绝对对你有帮助，请点个小星星
 
 
+qq:313690636
 
+qq群： 571627871
 
 
