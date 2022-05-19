@@ -1,0 +1,66 @@
+<div class="header_top">
+    <div class="center flex">
+        <div>联系电话：{{.config.tel}}</div>
+        <div class="header_top_r">
+
+            <div class="search" id="search">
+                <input type="text" value="" placeholder="搜索关键词" />
+                <input type="submit" value="" />
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header">
+    <div class="center flex">
+        <a href="/" class="logo1"><img src="{{.config.logo}}" alt="" /></a>
+        <ul class="head_nav_content">
+            {{range $pk,$pv := .pCate}}
+            <li class="head_nav" data-url='{{.Banner}}' data-id="{{.Id}}" id="pn_{{.Id}}">
+                <a data-href="{{.Url}}" data-id="{{.Id}}"  id="p_{{.Id}}">{{.Name}}</a>
+                {{if ne .Sort 0}}
+                <div class="nav_list">
+                    <div class="nav_img" >
+                        <img src="" alt=""  />
+                        <div>{{.Name}}</div>
+                    </div>
+                    <div class="nav_z">
+                        <div class="nav_z_l">
+                            {{range $sk,$sv := $.sonCate}}
+                                {{if eq $pv.Id $sv.ParentId}}
+                                     <div><a  data-id="{{$sv.Id}}" data-href="{{$sv.Url}}">{{$sv.Name}}</a></div>
+                                {{end}}
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+                {{end}}
+            </li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+
+<div class="nav">
+    <a href="" class="logo1"><img src="{{.config.logo}}" alt=""/></a>
+    <div class="menu">
+        <div class="aa"></div>
+        <div class="bb"></div>
+        <div class="cc"></div>
+    </div>
+    <div class="menu_list">
+        <ul>
+            <li><a href="">首页</a></li>
+            <li><a href="">关于开赟</a></li>
+            <li><a href="">公司资质</a></li>
+            <li><a href="">技术服务</a></li>
+            <li><a href="">自主产品</a></li>
+            <li><a href="">客户和案例</a></li>
+            <li><a href="">合作伙伴</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+        <div class="wap_search">
+            <input type="text" value="" placeholder="搜索关键词"/>
+            <input type="submit" value=""/>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-公司资质</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a class="ts" href="">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">公司资质</a></div>
+    <div class="lm_tab">
+        {{range $qk,$qv := .qcate}}
+            <div><a href="/quality?id={{.Id}}" id="quality_{{.Id}}" >{{.Name}}</a></div>
+        {{end}}
+    </div>
+    <ul class="img_list">
+        {{range .articles}}
+        <li>
+            <a href="/content/{{.Id}}">
+                <img src="{{.Img}}" alt="" />
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

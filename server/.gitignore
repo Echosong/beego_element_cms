@@ -1,0 +1,10 @@
+beego-admin.*exe*
+static/uploads/*
+.idea/*
+main.exe
+*.exe
+main
+vendor/*
+go.sum
+lastupdate.tmp
+upload

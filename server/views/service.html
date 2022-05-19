@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-技术服务</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(/static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">技术服务</a></div>
+    <div class="service_con">
+        <h1>我们的服务</h1>
+        <div>{{.service.text}}</div>
+    </div>
+</div>
+<div class="service_jc" style="background-image: url(/static/web/images/pic27.jpg);">
+    <div class="center">
+        {{range $bk,$bv := .service.bg}}
+        <img src="{{$bv.url}}" alt="" />
+        {{end}}
+    </div>
+</div>
+<div class="service_fw">
+    <div class="center">
+        <h1>项目规划和实施服务</h1>
+       {{str2html .service.content}}
+    </div>
+</div>
+<div class="center">
+    <div class="flex jy">
+        <div class="jy_text">{{str2html .service.foot_content}}</div>
+        <ul class="jy_img">
+            {{range $sk,$sv := .service.foot }}
+            <li><img src="{{$sv.url}}" alt="" /></li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

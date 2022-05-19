@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+{{template "link.html" .}}
+<title> {{.config.title}}-{{.Title}}</title>
+</head>
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(/static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">{{.Title}}</a></div>
+</div>
+<div class="cp_tab">
+    <div class="center">
+        {{range .products}}
+        <a data-id="{{.Id}}" id="p_{{.CategoryId}}">{{.Title}}</a>
+        {{end}}
+    </div>
+</div>
+<div class="center">
+    <ul class="cp_list">
+        {{range .products}}
+        <a name="{{.Id}}"></a>
+        <a name="{{.CategoryId}}"></a>
+        <li>
+            <div class="div"></div>
+            <div class="cp_list_zy">
+                <span>{{.Title}}</span>
+                <em>{{.Info}}</em>
+            </div>
+            <div class="flex">
+                <div class="cp_text">
+                   {{str2html .Content}}
+                </div>
+                <div class="cp_img">
+                    <img src="{{.Img}}" alt="" />
+                </div>
+            </div>
+        </li>
+        {{end}}
+    </ul>
+</div>
+{{template "footer.html" .}}
+</body>
+<script>
+    function getSuffix(){
+       let href = location.href
+        let tab_id = href.split("#")[1]
+        $('.cp_tab a').removeClass("current")
+        $("#p_"+tab_id).addClass("current")
+    }
+
+    $(function(){
+        getSuffix()
+        $('.cp_tab a').click(function (){
+            $('.cp_tab a').removeClass("current")
+            $(this).addClass("current")
+            let id = $(this).attr("data-id")
+            location.href = "#"+id
+        })
+    })
+</script>
+</html>

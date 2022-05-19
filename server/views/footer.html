@@ -1,0 +1,111 @@
+<div class="footer">
+    <div class="center">
+        <div class="flex">
+            <div class="foot_left">
+                <div class="foot_tab">
+                    {{range $k,$v := .adCates}}
+                    <div>
+                        <span>{{.Name}}</span>
+                        <ul>
+                            {{range $key,$c := $.ads}}
+                                {{if eq $c.CategoryId  $v.Id}}
+                                    <li><a href="{{$c.Link}}"  target="_blank">{{$c.Title}}</a></li>
+                                {{end}}
+                            {{end}}
+                        </ul>
+                    </div>
+                    {{end}}
+                </div>
+                <ul class="contact">
+                    <li>联系我们</li>
+                    <li>联系电话：{{.config.tel}}</li>
+                    <li>公司地址：{{.config.address}}</li>
+                </ul>
+            </div>
+            <div class="foot_right">
+                <ul>
+                    <li>
+                        <div><img src="{{.config.orcode_wx}}" alt="" /></div>
+                        <span>开赟微信公众号</span>
+                    </li>
+                    <li>
+                        <div><img src="{{.config.orcode_wb}}" alt="" /></div>
+                        <span>开赟微博</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="text">
+            {{.config.right}}<a href="" target="_blank">{{.config.icp}}</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/static/web/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/static/web/js/index.js"></script>
+<script>
+
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    $(function () {
+
+        let search =  function (){
+            let keyword = $("#search input").eq(0).val();
+            if(keyword.length < 2){
+                alert("先输入搜索内容")
+                return
+            }
+            let index = getQueryString(0)||0
+            location.href = "/search?keyword="+encodeURI(keyword)+"&index="+index
+        }
+        $("#search input").eq(1).click(search)
+        $("#search input").eq(0).bind('keypress',function(event){
+            if(event.keyCode == "13")
+            {
+               search()
+            }
+        })
+
+        $('.head_nav').each((index,item)=>{
+            let imgStr = $(item).attr("data-url");
+            if(imgStr){
+                let imgJson = imgStr.split(",")
+                $(item).find("img").attr("src", imgJson[0])
+            }
+        })
+        $('.head_nav a').click(function (){
+            let id = $(this).closest(".head_nav").attr("data-id")
+            localStorage.setItem("nav_id", id)
+            let url = $(this).attr("data-href")
+            let aId = $(this).attr('data-id')
+            if(url.indexOf("#") != -1){
+                location.href = url
+            }else{
+                location.href = url+"?id="+aId+"#"+aId
+            }
+        })
+
+        let pId = localStorage.getItem("nav_id");
+        $('#p_'+pId).addClass("current")
+
+        //资质模块
+        let qId = getQueryString("id")
+        $("#quality_"+qId).addClass("current")
+
+        // banner
+        let bannerUrl = $('#pn_'+pId).attr("data-url")
+        if(bannerUrl){
+            let bannerJson = bannerUrl.split(',')
+            if(bannerJson.length > 1){
+                $('.lm_banner').css('background', 'url(/'+bannerJson[1]+')')
+            }
+        }
+
+    })
+</script>

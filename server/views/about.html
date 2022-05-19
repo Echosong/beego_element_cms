@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-关于我们</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" ></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="/about">关于开赟</a></div>
+    <div class="about_tw">
+        <div class="about_jj"><p>{{str2html .about.Content}}</p></div>
+        <div class="about_video">
+            <video controls="controls" poster="/static/web/images/pic42.jpg">
+                <source src="{{.about.Video}}" type="video/mp4"></source>
+                当前浏览器不支持 video直接播放
+            </video>
+        </div>
+    </div>
+</div>
+<div class="about_list" style="background-image: url(static/web/images/pic9.jpg);">
+    <div class="center">
+        <ul>
+            {{range .bs}}
+            <li>
+                <div class="about_list_img">
+                    <img src="{{.icon}}" alt="" />
+                </div>
+                <div class="about_list_text">
+                    <div>{{str2html .text}}</div>
+                </div>
+            </li>
+            {{end}}
+        </ul>
+    </div>
+</div>
+<div class="center">
+    <div class="title2">
+        <a name="2"></a><!-- 定义锚点 -->
+        <div>主营业务</div>
+    </div>
+    <ul class="yw_list">
+        {{range .articles}}
+        <li>
+            <a href="">
+                <img src="{{.Img}}" alt="" />
+                <span>{{.Title}}</span>
+                <em>{{.Info}}</em>
+            </a>
+        </li>
+        {{end}}
+    </ul>
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

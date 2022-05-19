@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-{{.keyword}}</title>
+<style>
+    .result_list_text a>span {
+        display: block;
+        width: 94px;
+        height: 92px;
+        flex-shrink: 0;
+        text-align: center;
+        background: #ebf2fa;
+        font-size: 34px;
+        color: #095092;
+    }
+    .result_list_text a>span span {
+        display: block;
+        font-size: 34px;
+        color: #095092;
+        line-height: 40px;
+        padding-top: 15px;
+        font-weight: bold;
+    }
+</style>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="grey"></div>
+<div class="center">
+    <div class="result_title"><span>“{{.keyword}}”</span>搜索结果</div>
+    <div class="flex search_flex">
+        <ul class="search_tab"  style="margin-bottom: 50px">
+            <li><div>分类</div></li>
+            <li {{if eq .index 0}} class="current" {{end}} ><a href="?keyword={{.keyword}}&index=0" >客户和案例 </a></li>
+            <li {{if eq .index 1}} class="current" {{end}} ><a  href="?keyword={{.keyword}}&index=1">自主产品</a></li>
+        </ul>
+        <div class="result_list">
+            <div class="number">找到<span>{{.count}}</span>条记录</div>
+            <ul class="result_list_tw">
+                {{range .data}}
+
+                {{if eq .Img ""}}
+                <li class="result_list_text">
+                    <a href="">
+						<span>
+							<span>{{date .CreateTime "d"}}</span>
+							<em>{{date .CreateTime "Y-m"}}</em>
+						</span>
+                        <em>
+                            <span>{{.Title}}</span>
+                            <em>{{.Info}}</em>
+                        </em>
+                    </a>
+                </li>
+                {{else}}
+                <li class="result_list_tw result_list_text">
+                    <a href="">
+                        <span><img src="{{.Img}}" alt="" /></span>
+                        <em>
+                            <span>{{.Title}}</span>
+                            <em>{{.Info}}</em>
+                        </em>
+                    </a>
+                </li>
+                {{end}}
+                {{end}}
+            </ul>
+            <div class="page">
+                {{.pagebar}}
+            </div>
+        </div>
+    </div>
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

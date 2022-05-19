@@ -1,0 +1,1679 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "basePath": "/api",
+    "paths": {
+        "/ad/listPage": {
+            "put": {
+                "tags": [
+                    "ad"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "AdController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/ad/save": {
+            "post": {
+                "tags": [
+                    "ad"
+                ],
+                "description": "新增或者修改 Ad\n\u003cbr\u003e",
+                "operationId": "AdController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Ad数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Ad"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/ad/{id}": {
+            "get": {
+                "tags": [
+                    "ad"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "AdController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Ad id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Ad"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ad"
+                ],
+                "description": "delete the Ad\n\u003cbr\u003e",
+                "operationId": "AdController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/article/find/{id}": {
+            "get": {
+                "tags": [
+                    "article"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "ArticleController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Article id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Article"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/article/listPage": {
+            "put": {
+                "tags": [
+                    "article"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "ArticleController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/article/save": {
+            "post": {
+                "tags": [
+                    "article"
+                ],
+                "description": "新增或者修改 Article\n\u003cbr\u003e",
+                "operationId": "ArticleController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Article数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Article"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/article/{id}": {
+            "delete": {
+                "tags": [
+                    "article"
+                ],
+                "description": "delete the Article\n\u003cbr\u003e",
+                "operationId": "ArticleController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/category/find/{id}": {
+            "get": {
+                "tags": [
+                    "category"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "CategoryController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Category id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Category"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/category/listPage": {
+            "put": {
+                "tags": [
+                    "category"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "CategoryController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/category/save": {
+            "post": {
+                "tags": [
+                    "category"
+                ],
+                "description": "新增或者修改 Category\n\u003cbr\u003e",
+                "operationId": "CategoryController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Category数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Category"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/category/{id}": {
+            "delete": {
+                "tags": [
+                    "category"
+                ],
+                "description": "delete the Category\n\u003cbr\u003e",
+                "operationId": "CategoryController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/config/find/{id}": {
+            "get": {
+                "tags": [
+                    "config"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "ConfigController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Config id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Config"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/config/list": {
+            "get": {
+                "tags": [
+                    "config"
+                ],
+                "description": "获取所有数据\n\u003cbr\u003e",
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Config"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/config/save": {
+            "post": {
+                "tags": [
+                    "config"
+                ],
+                "description": "批量保持 Config\n\u003cbr\u003e",
+                "operationId": "ConfigController.批量保存",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Config数据",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.Config"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Config"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/content/listPage": {
+            "put": {
+                "tags": [
+                    "content"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "ContentController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/content/save": {
+            "post": {
+                "tags": [
+                    "content"
+                ],
+                "description": "新增或者修改 Content\n\u003cbr\u003e",
+                "operationId": "ContentController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Content数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Content"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/content/{code}": {
+            "get": {
+                "tags": [
+                    "content"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "ContentController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "code",
+                        "description": "Content id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Content"
+                        }
+                    },
+                    "403": {
+                        "description": ":code is empty"
+                    }
+                }
+            }
+        },
+        "/content/{id}": {
+            "delete": {
+                "tags": [
+                    "content"
+                ],
+                "description": "delete the Content\n\u003cbr\u003e",
+                "operationId": "ContentController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/main/upload": {
+            "post": {
+                "tags": [
+                    "main"
+                ],
+                "description": "上传图片\n\u003cbr\u003e"
+            }
+        },
+        "/permission/find/{id}": {
+            "get": {
+                "tags": [
+                    "permission"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "PermissionController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Permission id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Permission"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/permission/listByRole/{id}": {
+            "get": {
+                "tags": [
+                    "permission"
+                ]
+            }
+        },
+        "/permission/listByUser/{id}": {
+            "get": {
+                "tags": [
+                    "permission"
+                ],
+                "description": "获取当前用户的权限\n\u003cbr\u003e",
+                "operationId": "PermissionController.根据用户获取当前的权限",
+                "responses": {
+                    "{object}": {
+                        "description": "[] models.Permission"
+                    }
+                }
+            }
+        },
+        "/permission/listPage": {
+            "put": {
+                "tags": [
+                    "permission"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "PermissionController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/permission/save": {
+            "post": {
+                "tags": [
+                    "permission"
+                ],
+                "description": "新增或者修改 Permission\n\u003cbr\u003e",
+                "operationId": "PermissionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Permission数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Permission"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/permission/updateRolePermissions/{id}": {
+            "post": {
+                "tags": [
+                    "permission"
+                ]
+            }
+        },
+        "/permission/{id}": {
+            "delete": {
+                "tags": [
+                    "permission"
+                ],
+                "description": "delete the Permission\n\u003cbr\u003e",
+                "operationId": "PermissionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/product/": {
+            "post": {
+                "tags": [
+                    "product"
+                ],
+                "description": "新增或者修改 Product\n\u003cbr\u003e",
+                "operationId": "ProductController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Product数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Product"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/product/list/{ids}": {
+            "get": {
+                "tags": [
+                    "product"
+                ],
+                "description": "根据分类查询\n\u003cbr\u003e",
+                "operationId": "ProductController.根据分类查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/product/save": {
+            "post": {
+                "tags": [
+                    "product"
+                ]
+            }
+        },
+        "/product/{id}": {
+            "get": {
+                "tags": [
+                    "product"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "ProductController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Product id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Product"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "product"
+                ],
+                "description": "delete the Product\n\u003cbr\u003e",
+                "operationId": "ProductController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/role/find/{id}": {
+            "get": {
+                "tags": [
+                    "role"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "RoleController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Role id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Role"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/role/listPage": {
+            "put": {
+                "tags": [
+                    "role"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "RoleController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/role/save": {
+            "post": {
+                "tags": [
+                    "role"
+                ],
+                "description": "新增或者修改 Role\n\u003cbr\u003e",
+                "operationId": "RoleController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Role数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.Role"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/role/{id}": {
+            "delete": {
+                "tags": [
+                    "role"
+                ],
+                "description": "delete the Role\n\u003cbr\u003e",
+                "operationId": "RoleController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        },
+        "/user/find/{id}": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "description": "根据用户id查询单个用户信息\n\u003cbr\u003e",
+                "operationId": "UserController.获取单个",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "User id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "403": {
+                        "description": ":id is empty"
+                    }
+                }
+            }
+        },
+        "/user/getCurrent": {
+            "get": {
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/listPage": {
+            "put": {
+                "tags": [
+                    "user"
+                ],
+                "description": "分页查询\n\u003cbr\u003e",
+                "operationId": "UserController.分页查询",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "userQuery",
+                        "description": "查询列表",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dtos.UserQuery"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/models.User"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "empty"
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "tags": [
+                    "user"
+                ]
+            }
+        },
+        "/user/save": {
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "description": "新增或者修改 User\n\u003cbr\u003e",
+                "operationId": "UserController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User数据",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "0": {
+                        "description": "{int} models.User"
+                    },
+                    "500": {
+                        "description": "body is empty"
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "description": "delete the User\n\u003cbr\u003e",
+                "operationId": "UserController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "403": {
+                        "description": "id is empty"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dtos.UserQuery": {
+            "title": "UserQuery",
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "state": {
+                    "description": "状态",
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "username": {
+                    "description": "账号",
+                    "type": "string"
+                }
+            }
+        },
+        "models.Ad": {
+            "title": "Ad",
+            "type": "object",
+            "properties": {
+                "category_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "link": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "state": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.Article": {
+            "title": "Article",
+            "type": "object",
+            "properties": {
+                "category_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "memo": {
+                    "type": "string"
+                },
+                "sort": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "state": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "user": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Category": {
+            "title": "Category",
+            "type": "object",
+            "properties": {
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sort": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Config": {
+            "title": "Config",
+            "type": "object",
+            "properties": {
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "group": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Content": {
+            "title": "Content",
+            "type": "object",
+            "properties": {
+                "bs": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "top_img": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "video": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Permission": {
+            "title": "Permission",
+            "type": "object",
+            "properties": {
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "perms": {
+                    "type": "string"
+                },
+                "show": {
+                    "type": "boolean"
+                },
+                "sort": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "type": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.Product": {
+            "title": "Product",
+            "type": "object",
+            "properties": {
+                "category_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "content": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "img": {
+                    "type": "string"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.Role": {
+            "title": "Role",
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "parent_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "sort": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.SysBase": {
+            "title": "SysBase",
+            "type": "object",
+            "properties": {
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.User": {
+            "title": "User",
+            "type": "object",
+            "properties": {
+                "Password": {
+                    "type": "string"
+                },
+                "create_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "creator_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "delete_at": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "login_ip": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "reg_ip": {
+                    "type": "string"
+                },
+                "role_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "role_name": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "state": {
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "update_time": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "updater_id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "utils.Pager": {
+            "title": "Pager",
+            "type": "object",
+            "properties": {
+                "page": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalElements": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "totalPages": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "user",
+            "description": " UserController operations for User\n"
+        },
+        {
+            "name": "role",
+            "description": " RoleController operations for Role\n"
+        },
+        {
+            "name": "config",
+            "description": " ConfigController operations for Config\n"
+        },
+        {
+            "name": "ad",
+            "description": " AdController operations for Ad\n"
+        },
+        {
+            "name": "article",
+            "description": " ArticleController operations for Article\n"
+        },
+        {
+            "name": "category",
+            "description": " CategoryController operations for Category\n"
+        },
+        {
+            "name": "permission",
+            "description": " PermissionController operations for Permission\n"
+        },
+        {
+            "name": "content",
+            "description": " ContentController operations for Content\n"
+        },
+        {
+            "name": "product",
+            "description": " ProductController operations for Product\n"
+        }
+    ]
+}

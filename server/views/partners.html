@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-合作伙伴和技术中台</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(/static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">合作伙伴和技术中台</a></div>
+    <div class="al_title">合作伙伴和技术中台</div>
+    {{range $ptk,$ptv := .partners}}
+    <div class="hb_list">
+        <div>{{.Title}}</div>
+        <ul>
+            {{range  $ptv.Imgs }}
+            <li><div><img src="{{.url}}" alt="" /></div></li>
+            {{end}}
+        </ul>
+    </div>
+    {{end}}
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

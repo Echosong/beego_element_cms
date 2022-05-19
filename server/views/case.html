@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-客户和案例</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(/static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">客户和案例</a></div>
+    <div class="al_title">行业客户</div>
+    <ul class="kh_list">
+        <li>
+            {{range .imgs}}
+            <div class="border">
+                <div><img src="{{.url}}" alt="" /></div>
+            </div>
+            {{end}}
+        </li>
+
+    </ul>
+    <a name="1"></a>
+    <div class="al_title">主要案例</div>
+    <ul class="al_list">
+        {{range .articles}}
+        <li class="flex">
+            <div class="al_text">
+                <div class="al_text_title">{{.Title}}</div>
+
+                <div class="al_text_jj">{{.Memo}}</div>
+                <ul>
+                    <li><span>项目规模：</span>{{.Info}}</li>
+                    <li><span>项目难点：</span>{{str2html .Content}}</li>
+                </ul>
+            </div>
+            <div class="al_img">
+                <img src="{{.Img}}" alt="" />
+            </div>
+        </li>
+        {{end}}
+
+    </ul>
+    <div class="page">
+        {{.pagebar}}
+    </div>
+</div>
+{{template "footer.html" .}}
+<script>
+    $(function(){
+        var s=$('.kh_list li').length;
+        if(s>1){
+            var q=$('.kh_list li').eq(s-1).find(".border").length;
+            if(s%2==1){
+                if(q%2==1){
+                    $('.kh_list li').eq(s-1).append('<div class="border"><div></div></div>');
+                }
+            }else{
+                if(q%2==0){
+                    $('.kh_list li').eq(s-1).append('<div class="border"><div></div></div>');
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

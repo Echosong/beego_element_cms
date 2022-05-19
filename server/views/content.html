@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    {{template "link.html" .}}
+    <title> {{.config.title}}-{{.one.Title}}</title>
+</head>
+
+<body>
+{{template "header.html" .}}
+<div class="lm_banner" style="background-image: url(static/web/images/banner1.jpg);"></div>
+<div class="center">
+    <div class="curPosition"><a href="" class="ts">首页</a>&nbsp;&nbsp;/&nbsp;&nbsp;<a href="">公司资质</a></div>
+    <div class="news_content">
+        <div class="news_con_title">{{.one.Title}}</div>
+        <div class="news_con_time">
+            <span>来源：科技网</span>
+            <span>发布时间：{{date .one.CreateTime "Y-m-d"}}</span>
+        </div>
+        <div class="news_cons">
+            {{str2html .one.Content}}
+        </div>
+    </div>
+</div>
+{{template "footer.html" .}}
+</body>
+</html>

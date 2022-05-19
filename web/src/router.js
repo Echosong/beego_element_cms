@@ -1,0 +1,16 @@
+export default [
+{perms: "home", view: () => import('@/sa-resources/com-view/sa-home.vue')},
+{perms: "config-add", view: () => import('@/sa-view/config/add.vue')},
+{perms:"user-add", view: () => import('@/sa-view/user/add.vue')},
+{perms:"user-list", view: () => import('@/sa-view/user/list.vue')},
+{perms:"role-add", view: () => import('@/sa-view/role/add.vue')},
+{perms:"role-list", view: () => import('@/sa-view/role/list.vue')},
+{perms:"system-cfg", view: () => import('@/sa-view/cfg/system-cfg.vue')},
+{perms:"content", view: () => import('@/sa-view/article/content.vue')},
+{perms:"category-list", view: () => import('@/sa-view/category/list.vue')},
+{perms:"ad-list", view: () => import('@/sa-view/ad/list.vue')},
+{perms:"product-list", view: () => import('@/sa-view/product/list.vue')},
+{perms:"partner-list", view: () => import('@/sa-view/product/partner.vue')},
+{perms:"article-list", view: () => import('@/sa-view/article/list.vue')},
+{perms:"service", view: () => import('@/sa-view/product/service.vue')},
+]
