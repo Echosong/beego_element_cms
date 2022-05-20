@@ -49,14 +49,10 @@
     </div>
     <div class="menu_list">
         <ul>
-            <li><a href="">首页</a></li>
-            <li><a href="">关于开赟</a></li>
-            <li><a href="">公司资质</a></li>
-            <li><a href="">技术服务</a></li>
-            <li><a href="">自主产品</a></li>
-            <li><a href="">客户和案例</a></li>
-            <li><a href="">合作伙伴</a></li>
-            <li><a href="">联系我们</a></li>
+            {{range $pk,$pv := .pCate}}
+            <li><a href="{{.Url}}">{{.Name}}</a></li>
+            {{end}}
+
         </ul>
         <div class="wap_search">
             <input type="text" value="" placeholder="搜索关键词"/>
