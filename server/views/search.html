@@ -43,7 +43,7 @@
 
                 {{if eq .Img ""}}
                 <li class="result_list_text">
-                    <a href="">
+                    <a href="/content/{{.Id}}?index={{$.index}}">
 						<span>
 							<span>{{date .CreateTime "d"}}</span>
 							<em>{{date .CreateTime "Y-m"}}</em>
@@ -56,7 +56,7 @@
                 </li>
                 {{else}}
                 <li class="result_list_tw result_list_text">
-                    <a href="">
+                    <a href="/content/{{.Id}}?index={{$.index}}">
                         <span><img src="{{.Img}}" alt="" /></span>
                         <em>
                             <span>{{.Title}}</span>
@@ -68,7 +68,7 @@
                 {{end}}
             </ul>
             <div class="page">
-                {{.pagebar}}
+                {{str2html .pagebar}}
             </div>
         </div>
     </div>

@@ -10,9 +10,9 @@ type Ad struct {
 	Title      string `json:"title" orm:"description(标题)"`
 	Img        string `json:"img" orm:"description(路径)"`
 	Link       string `json:"link" orm:"description(链接)"`
-	State      int8   `json:"state" orm:"description(状态)"`
+	State      int8   `json:"state" orm:"description(状态)" `
 	Sort       int32  `json:"sort" orm:"description(排序)"`
-	CategoryId int    `json:"category_id" orm:"description(分类)"`
+	CategoryId int    `json:"category_id" orm:"description(分类)" type:"input"`
 }
 
 // Add AddUser insert a new User into database and returns

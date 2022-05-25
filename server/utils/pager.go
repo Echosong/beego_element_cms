@@ -81,9 +81,9 @@ func (this *Pager) ToString() string {
 	}
 
 	if this.Page > 1 {
-		buf.WriteString(fmt.Sprintf("<a class=\"layui-laypage-prev\" href=\"%s\">上一页</a></li>", this.url(this.Page-1)))
+		buf.WriteString(fmt.Sprintf("<a class=\"layui-laypage-prev\" href=\"%s\"><</a></li>", this.url(this.Page-1)))
 	} else {
-		buf.WriteString("<span>上一页</span>")
+		buf.WriteString("<span><</span>")
 	}
 
 	if this.Page > linknum {
@@ -103,9 +103,9 @@ func (this *Pager) ToString() string {
 	}
 
 	if this.Page < totalpage {
-		buf.WriteString(fmt.Sprintf("<a class=\"layui-laypage-next\" href=\"%s\">下一页</a></li>", this.url(this.Page+1)))
+		buf.WriteString(fmt.Sprintf("<a class=\"layui-laypage-next\" href=\"%s\">></a></li>", this.url(this.Page+1)))
 	} else {
-		buf.WriteString(fmt.Sprintf("<span>下一页</span>"))
+		buf.WriteString(fmt.Sprintf("<span>></span>"))
 	}
 	return buf.String()
 }

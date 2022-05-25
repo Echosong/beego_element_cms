@@ -107,7 +107,6 @@ func (c *MainController) Index() {
 	c.Data["products"] = c.getProduct(0)
 	partners := c.getProduct(24)
 
-
 	var peers []map[string]string
 	//处理多个图片
 	for _, partner := range partners {
@@ -115,8 +114,11 @@ func (c *MainController) Index() {
 		json.Unmarshal([]byte(partner.Content), &p)
 		peers = append(peers, p...)
 	}
-	c.Data["partners"] = peers
-
+	if len(peers) > 12 {
+		c.Data["partners"] = peers[0:12]
+	} else {
+		c.Data["partners"] = peers
+	}
 	//技术服务图片
 	c.getService()
 
@@ -125,7 +127,9 @@ func (c *MainController) Index() {
 	aquery := dtos.ArticleQuery{}
 	aquery.CategoryId = 12
 	articles, _ := articleDb.PageList(aquery)
-	c.Data["articles"] = articles
+	if len(articles) > 2 {
+		c.Data["articles"] = articles[:3]
+	}
 
 	c.TplName = "index.html"
 }
@@ -184,9 +188,16 @@ func (c *MainController) List() {
 // @router content/:id [get]
 func (c *MainController) Content() {
 	id, _ := strconv.Atoi(c.GetString(":id"))
-	articleDb := &models.Article{}
-	one, _ := articleDb.GetById(int64(id))
-	c.Data["one"] = one
+	index, _ := c.GetInt("index")
+	if index == 0 {
+		articleDb := &models.Article{}
+		one, _ := articleDb.GetById(int64(id))
+		c.Data["one"] = one
+	} else {
+		productDb := new(models.Product)
+		one, _ := productDb.GetById(int64(id))
+		c.Data["one"] = one
+	}
 	c.TplName = "content.html"
 }
 
@@ -215,6 +226,7 @@ func (c *MainController) Search() {
 		article := new(models.Article)
 		articleQuery := dtos.ArticleQuery{}
 		articleQuery.Title = keyword
+		articleQuery.Page = page
 		list, i := article.PageList(articleQuery)
 		c.Data["data"] = list
 		count = int(i)
@@ -222,6 +234,7 @@ func (c *MainController) Search() {
 		// 产品搜索
 		product := new(models.Product)
 		productQuery := dtos.ProductQuery{}
+		productQuery.Page = page
 		productQuery.Title = keyword
 		list, i := product.PageList(productQuery)
 		c.Data["data"] = list
@@ -258,7 +271,7 @@ func (c *MainController) Quality() {
 	c.TplName = "quality.html"
 }
 
-func (c *MainController) getService()  {
+func (c *MainController) getService() {
 	services := c.getProduct(17)
 	if len(services) > 0 {
 		contentMap := make(map[string]interface{})
@@ -321,9 +334,11 @@ func (c *MainController) Case() {
 	articleDb := new(models.Article)
 	aquery := dtos.ArticleQuery{}
 	aquery.CategoryId = 12
+	aquery.PageSize = 4
+	aquery.Page = page
 	articles, count := articleDb.PageList(aquery)
 	c.Data["articles"] = articles
-	c.Data["pagebar"] = util.NewPager(page, int(count), 10,
+	c.Data["pagebar"] = util.NewPager(page, int(count), aquery.PageSize,
 		fmt.Sprintf("/case"), true).ToString()
 	c.TplName = "case.html"
 }

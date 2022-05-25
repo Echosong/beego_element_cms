@@ -70,7 +70,7 @@ func (u *Article) PageList(query dtos.ArticleQuery) ([]*Article, int64) {
 	var list []*Article
 	if count > 0 {
 		offset := (query.Page - 1) * query.PageSize
-		qs.OrderBy("-id").Limit(query.PageSize, offset).All(&list)
+		qs.OrderBy("sort", "-id").Limit(query.PageSize, offset).All(&list)
 	}
 	return list, count
 }

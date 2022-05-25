@@ -30,11 +30,11 @@
         <img src="{{.about.Img}}" alt=""/>
     </a>
     <div class="about_con">
-        <div class="about_title"><a href="">{{.about.Title}}</a></div>
+        <div class="about_title"><a href="javascript:void(0);"  class="go" data-href="/about?id=14">{{.about.Title}}</a></div>
         <div class="about_text">
             {{str2html .about.Content}}
         </div>
-        <a class="more" href="/about">查看详情</a>
+        <a class="more go" href="javascript:void(0);"  data-href="/about?id=14">查看详情</a>
     </div>
 </div>
 <div class="service" style="background-image: url(/static/web/images/pic20.jpg);" >
@@ -65,7 +65,7 @@
             <div class="cp_hide">
                 <img src="/static/web/images/pic1.png" alt=""/>
                 <div>{{.Info}}</div>
-                <a href="/product">查看更多</a>
+                <a href="javascript:void(0);" class="go" data-href="/product?id=20">查看更多</a>
             </div>
         </li>
         {{end}}
@@ -102,12 +102,12 @@
         <ul>
             {{range $nk,$nv := .partners}}
             <li>
-                <a href=""><img src="{{.url}}" alt=""/></a>
+                <a href="javascript:void(0);" class="go" data-href="partner?id=24"><img src="{{.url}}" alt=""/></a>
             </li>
             {{end}}
 
         </ul>
-        <a href="partner?id=24" class="lookMore">查看更多<span>+</span></a>
+        <a href="javascript:void(0);" data-href="partner?id=24" class="lookMore go">查看更多<span>+</span></a>
     </div>
 </div>
 <div class="news" style="background-image: url(/static/web/images/pic3.png);">
@@ -119,7 +119,7 @@
         <ul>
             {{range $ak,$av := .articles}}
             <li>
-                <a href="">
+                <a href="javascript:void(0);" data-href="/case?id=11" class="go">
                     <span class="news_img"><img src="{{.Img}}" alt=""/></span>
                     <span class="news_title">{{.Title}}</span>
                     <span class="news_con">{{.Info}}</span>
@@ -129,7 +129,7 @@
 
         </ul>
         <div class="lookMore">
-            <a href="/case?id=11">更多案例</a>
+            <a  href="javascript:void(0);" class="go" data-href="/case?id=11">更多案例</a>
         </div>
     </div>
 </div>
@@ -149,6 +149,19 @@
         },
         loop: true
     });
+    $('.go').click(function (){
+        let name = "id";
+        var reg = /(\d+)/g;
+        let url = $(this).attr("data-href")
+        let r = url.match(reg);
+        console.log(r, 4545)
+        if (r != null) {
+            id = unescape(r[0]);
+            localStorage.setItem("nav_id", id)
+        }
+        location.href = $(this).attr("data-href")
+    })
+
 </script>
 </body>
 </html>

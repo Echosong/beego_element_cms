@@ -61,7 +61,7 @@
                 alert("先输入搜索内容")
                 return
             }
-            let index = getQueryString(0)||0
+            let index = getQueryString("index")||0
             location.href = "/search?keyword="+encodeURI(keyword)+"&index="+index
         }
         $("#search input").eq(1).click(search)
@@ -70,6 +70,15 @@
             {
                search()
             }
+        })
+        $("#wap_search input").eq(1).click(function (){
+            let keyword = $("#wap_search input").eq(0).val();
+            if(keyword.length < 2){
+                alert("先输入搜索内容")
+                return
+            }
+            let index = getQueryString(0)||0
+            location.href = "/search?keyword="+encodeURI(keyword)+"&index="+index
         })
 
         $('.head_nav').each((index,item)=>{

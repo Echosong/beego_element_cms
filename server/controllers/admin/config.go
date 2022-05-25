@@ -14,7 +14,7 @@ type ConfigController struct {
 
 var configDb = new(models.Config)
 
-// Post ...
+// Save Post ...
 // @Title 批量保存
 // @Description  批量保持 Config
 // @Param body	body []models.Config true "Config数据"

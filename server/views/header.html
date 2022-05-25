@@ -1,3 +1,8 @@
+<style>
+    .head_nav a {
+        cursor: pointer;
+    }
+</style>
 <div class="header_top">
     <div class="center flex">
         <div>联系电话：{{.config.tel}}</div>
@@ -54,7 +59,7 @@
             {{end}}
 
         </ul>
-        <div class="wap_search">
+        <div class="wap_search" id="wap_search">
             <input type="text" value="" placeholder="搜索关键词"/>
             <input type="submit" value=""/>
         </div>
