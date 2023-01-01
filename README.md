@@ -88,6 +88,8 @@ npm run build
 
 后台：  http://localhost:8081
 
+账号 admin  密码 654321
+
 ![img](https://raw.githubusercontent.com/Echosong/beego_element_cms/master/doc/2.png)
 
 ```
