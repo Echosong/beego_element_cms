@@ -128,7 +128,7 @@ qq:313690636
 
 qq群： 571627871
 
-![img](https://github.com/Echosong/beego_element_cms/blob/main/wx.png?raw=true)
+![img](https://github.com/Echosong/beego_element_cms/blob/main/doc/wx.png?raw=true)
 
 
 
